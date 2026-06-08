@@ -17,7 +17,7 @@
   },
   "keywords": [],
   "author": "Headlo",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
     "nfc-pcsc": "^0.8.1"
   },

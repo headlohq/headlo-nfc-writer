@@ -33,7 +33,7 @@ Copy `.env.example` to `.env` and fill in your values:
 |---|---|---|
 | `HEADLO_SIGNER_KEY` | Yes | `hdl_sk_...` API key from Signer Dashboard |
 | `NFC_SERVER_NAME` | No | Display name shown in the dashboard status badge |
-| `VITE_HEADLO_API_URL` | No | Worker API base (default: `http://127.0.0.1:8787`) |
+| `VITE_HEADLO_API_URL` | No | Worker API base (default: `https://api.headlo.com`) |
 | `WEB_APP_URL` | No | Verify URL base; overrides API base when set and non-localhost |
 | `TLS_CERT` / `TLS_KEY` | No | Paths to TLS cert/key for HTTPS (required for Tailscale) |
 | `DEBUG_MODE` | No | Set `true` to skip already-written and chip-claimed checks |

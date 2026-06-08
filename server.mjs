@@ -18,7 +18,7 @@ for (const p of ['.env', '../headlo-worker/.dev.vars']) {
 }
 
 const PORT       = 27153
-const API        = process.env.HEADLO_API ?? process.env.VITE_HEADLO_API_URL ?? 'http://127.0.0.1:8787'
+const API        = process.env.HEADLO_API ?? process.env.VITE_HEADLO_API_URL ?? 'https://api.headlo.com'
 const WEB_APP    = process.env.WEB_APP_URL ?? ''
 const VERIFY_BASE = WEB_APP && !WEB_APP.includes('localhost') ? WEB_APP : API
 const API_KEY    = process.env.HEADLO_SIGNER_KEY ?? ''

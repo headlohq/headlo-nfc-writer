@@ -1,0 +1,55 @@
+trigger:
+  tags:
+    include:
+      - nfc-v*
+
+pr: none
+
+jobs:
+  - job: BuildWindows
+    displayName: Build Windows binary
+    pool:
+      vmImage: windows-latest
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '18.x'
+        displayName: Install Node 18
+
+      - script: npm install
+        workingDirectory: nfc-writer
+        displayName: npm install (compiles native .node)
+
+      - script: npm run build:win
+        workingDirectory: nfc-writer
+        displayName: Build headlo-nfc-writer.exe
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathToPublish: nfc-writer/dist/headlo-nfc-writer.exe
+          artifactName: headlo-nfc-writer-win
+        displayName: Publish Windows binary
+
+  - job: BuildMac
+    displayName: Build macOS binary
+    pool:
+      vmImage: macos-latest
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '18.x'
+        displayName: Install Node 18
+
+      - script: npm install
+        workingDirectory: nfc-writer
+        displayName: npm install (compiles native .node)
+
+      - script: npm run build:mac
+        workingDirectory: nfc-writer
+        displayName: Build headlo-nfc-writer-mac
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathToPublish: nfc-writer/dist/headlo-nfc-writer-mac
+          artifactName: headlo-nfc-writer-mac
+        displayName: Publish macOS binary

@@ -1,0 +1,28 @@
+{
+  "name": "headlo-nfc-writer",
+  "version": "1.2.0",
+  "description": "Headlo NFC tag writer",
+  "main": "server.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "build:bundle": "esbuild server.mjs --bundle --platform=node --format=cjs --external:@pokusew/pcsclite --outfile=dist/server.cjs",
+    "build:win": "npm run build:bundle && pkg dist/server.cjs --targets node18-win-x64 --config package.json --output dist/headlo-nfc-writer.exe",
+    "build:mac": "npm run build:bundle && pkg dist/server.cjs --targets node18-mac-x64 --config package.json --output dist/headlo-nfc-writer-mac"
+  },
+  "pkg": {
+    "assets": [
+      "node_modules/@pokusew/pcsclite/build/Release/*.node"
+    ]
+  },
+  "keywords": [],
+  "author": "Headlo",
+  "license": "Elastic-2.0",
+  "dependencies": {
+    "nfc-pcsc": "^0.8.1"
+  },
+  "devDependencies": {
+    "@yao-pkg/pkg": "^5.11.5",
+    "esbuild": "^0.21.0"
+  }
+}
